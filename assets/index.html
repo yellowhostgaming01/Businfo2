@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusInfo</title>
+    <link rel="stylesheet" href="fonts/opfonts/style.css">
+    <link rel="stylesheet" href="bundle/app.bundle.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="icon"><i class="fas fa-bars"></i></div>
+        <div class="title">BusInfo</div>
+        <div class="icon"><i class="fas fa-search"></i></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="card-grid">
+            <div class="card" onclick="openSection('searchSection')">
+                <i class="fas fa-bus"></i>
+                <h3>Search Bus</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-location-arrow"></i>
+                <h3>Live Bus</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-phone"></i>
+                <h3>Enquiry No</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-building"></i>
+                <h3>Govt. Bus</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Private Bus</h3>
+            </div>
+            <div class="card">
+                <i class="fas fa-info-circle"></i>
+                <h3>More Info</h3>
+            </div>
+        </div>
+
+
+        <div id="searchSection" class="full-section ">
+            <!-- Close button -->
+            <button class="app-close-btn" onclick="closeSection('searchSection')">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Section title -->
+            <h2 class="app-section-title">Search Bus</h2>
+
+            <!-- Search inputs -->
+            <div class="app-search-inputs">
+                <div class="app-input-group">
+                    <input type="text" placeholder="From" id="fromInput" class="suggestion-input" data-list="places1" autocomplete="off">
+                    <ul class="suggestions"></ul>
+                </div>
+                <div class="app-swap-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="app-input-group">
+                    <input type="text" placeholder="To" id="toInput" class="suggestion-input" data-list="places1" autocomplete="off">
+                    <ul class="suggestions"></ul>
+                </div>
+            </div>
+
+            <div id="searchSection_error" class="inputErrorUnique_searchSection"></div>
+
+            <!-- Search button -->
+            <button class="app-search-btn">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div>
+
+        <div class="full-section" id="searchedCitySection">
+            <!-- Close Button -->
+            <button class="app-close-btn" onclick="closeSectionTop('searchedCitySection')">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Section Title -->
+            <h2 class="app-section-title">Bus Found</h2>
+
+            <!-- Tab Bar -->
+            <div class="tab-bar">
+                <button class="tab-btn"><i class="fas fa-filter"></i> Filter</button>
+                <button class="tab-btn"><i class="fas fa-sort-amount-down"></i> Sort</button>
+                <button class="tab-btn"><i class="fas fa-th-large"></i> Other</button>
+                <button class="tab-btn"><i class="fas fa-ellipsis-h"></i> More</button>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Main content placeholder -->
+            <div class="searched-content">
+                <div class="bus-item">
+                    <div class="bus-time-row">
+                        <div class="time">10:00 AM - 08:00 PM</div>
+                        <div class="bus-type">AC</div>
+                    </div>
+                    <div class="bus-info-row">
+                        <span>⏰ 10h</span>
+                        <span><i class="fas fa-building"></i> Vendor1</span>
+                    </div>
+                    <div class="bus-extra">Some extra info</div>
+                </div>
+
+                <div class="bus-item">
+                    <div class="bus-time-row">
+                        <div class="time">09:30 AM - 07:00 PM</div>
+                        <div class="bus-type">Non AC</div>
+                    </div>
+                    <div class="bus-info-row">
+                        <span>⏰ 9.5h</span>
+                        <span><i class="fas fa-building"></i> Vendor2</span>
+                    </div>
+                    <div class="bus-extra">Optional info</div>
+                </div>
+
+                <div class="bus-item">
+                    <div class="bus-time-row">
+                        <div class="time">06:00 AM - 04:00 PM</div>
+                        <div class="bus-type">AC</div>
+                    </div>
+                    <div class="bus-info-row">
+                        <span>⏰ 10h</span>
+                        <span><i class="fas fa-building"></i> Vendor3</span>
+                    </div>
+                    <div class="bus-extra">Extra info here</div>
+                </div>
+
+                <div class="bus-item">
+                    <div class="bus-time-row">
+                        <div class="time">01:00 PM - 11:00 PM</div>
+                        <div class="bus-type">Non AC</div>
+                    </div>
+                    <div class="bus-info-row">
+                        <span>⏰ 10h</span>
+                        <span><i class="fas fa-building"></i> Vendor4</span>
+                    </div>
+                    <div class="bus-extra">Extra details</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import {
+            getFirestore,
+            collection,
+            getDocs,
+            onSnapshot
+        } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAHP-EQhADXl9ZjtG1MgDrcQn9rK6mSrjs",
+            authDomain: "businfo-yhgindian.firebaseapp.com",
+            projectId: "businfo-yhgindian",
+            storageBucket: "businfo-yhgindian.firebasestorage.app",
+            messagingSenderId: "108457341569",
+            appId: "1:108457341569:web:4cb2c4ee15c61c9c195380",
+            measurementId: "G-DW7H5KPDPX",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        window.db = getFirestore(app);
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.onSnapshot = onSnapshot;
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

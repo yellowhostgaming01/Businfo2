@@ -1,0 +1,231 @@
+/* Section Title */
+#searchedCitySection .app-section-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: #00fffc;
+}
+
+/* Divider */
+#searchedCitySection .section-divider {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 10px 0;
+}
+
+/* Main content */
+#searchedCitySection .searched-content {
+  padding: 10px 0;
+}
+
+/* Tab Bar */
+#searchedCitySection .tab-bar {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-behavior: smooth;
+  background-color: #181818; /* subtle dark */
+  border-bottom: 1px solid #2c2c2c;
+}
+
+/* Hide default scrollbar */
+#searchedCitySection .tab-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tab Button */
+#searchedCitySection .tab-btn {
+  flex: 0 0 auto;
+  padding: 10px 22px;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon inside tab */
+#searchedCitySection .tab-btn i {
+  margin-right: 8px;
+  font-size: 16px;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* Hover effect */
+#searchedCitySection .tab-btn:hover {
+  background-color: #2a2a2a;
+  color: #00c8ff;
+  border-color: #00c8ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+#searchedCitySection .tab-btn:hover i {
+  transform: rotate(15deg);
+  color: #00c8ff;
+}
+@media (max-width: 480px) {
+    #searchedCitySection .tab-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    #searchedCitySection .tab-btn i {
+        font-size: 12px;
+    }
+}
+
+
+/* Selected tab */
+#searchedCitySection .tab-btn.selected {
+  background-color: #00c8ff;
+  color: #121212;
+  border-color: #00c8ff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+#searchedCitySection .tab-btn.selected i {
+  transform: rotate(0deg);
+  color: #121212;
+}
+
+/* Smooth active toggle */
+#searchedCitySection .tab-btn.active,
+#searchedCitySection .tab-btn.selected.active {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Bus Items */
+#searchedCitySection .bus-item {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: background-color 0.25s; /* sirf color change */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: Arial, Helvetica, sans-serif; /* system font */
+}
+
+/* Hover: sirf color change */
+#searchedCitySection .bus-item:hover {
+  background-color: #2c2c2c; /* thoda bright dark */
+}
+
+/* Top time row */
+.bus-time-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bus-time-row .time {
+  font-size: 16px;
+  font-weight: 700;
+  color: #00ffc3; /* neon teal */
+}
+
+.bus-time-row .bus-type {
+  background-color: #333333;
+  color: #ff9f00; /* bright orange */
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Info row */
+.bus-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.bus-info-row span.time-icon {
+  color: #00ffc3; /* neon teal */
+}
+
+.bus-info-row span.vendor {
+  color: #ff5dff; /* pink/magenta */
+}
+
+.bus-info-row i {
+  margin-right: 5px;
+  color: #ff9f00; /* bright orange for icon */
+}
+
+/* Optional extra line */
+.bus-extra {
+  font-size: 13px;
+  color: #aaaaaa;
+}
+
+/* Responsive & compact */
+@media (max-width: 480px) {
+  #searchedCitySection .bus-item {
+    padding: 10px 12px; /* thoda chhota padding */
+    margin-bottom: 12px; /* gap thoda kam */
+  }
+  .bus-time-row .time {
+    font-size: 14px; /* chhoti font */
+  }
+  .bus-time-row .bus-type {
+    font-size: 10px; /* chhoti font */
+    padding: 2px 6px; /* chhoti padding */
+  }
+  .bus-info-row {
+    font-size: 12px; /* chhoti font */
+    gap: 6px; /* spacing kam */
+  }
+  .bus-extra {
+    font-size: 11px; /* chhoti font */
+  }
+}
+
+#searchedCitySection .searched-content {
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
+  padding-right: 8px;
+  position: relative;
+}
+
+/* Hide default scrollbar */
+#searchedCitySection .searched-content::-webkit-scrollbar {
+  width: 10px;
+}
+
+#searchedCitySection .searched-content::-webkit-scrollbar-track {
+  background: #1f1f1f;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #00000080;
+}
+
+#searchedCitySection .searched-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00ffc3, #00a0ff);
+  border-radius: 5px;
+  border: 2px solid #1f1f1f;
+  transition: all 0.2s ease-in-out;
+}
+
+#searchedCitySection .searched-content::-webkit-scrollbar-thumb:hover {
+  transform: scaleX(1.2);
+}
+
+/* Optional: smooth scrolling effect */
+#searchedCitySection .searched-content {
+  scroll-behavior: smooth;
+}
