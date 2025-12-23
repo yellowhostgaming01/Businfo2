@@ -526,5 +526,4 @@
 /* Hover effect on selected row */
 .route-table tbody tr.selected:hover {
     color: #ffe600; /* slightly different on hover */
-    dot: background: #ffe600;
 }
