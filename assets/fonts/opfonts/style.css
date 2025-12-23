@@ -4,6 +4,11 @@
 }
 
 @font-face {
+  font-family: "HindiGujarati";
+  src: url("fonts/hindi-gujarati font.ttf");
+}
+
+@font-face {
   font-family: 'Opfonts';
   src: url('fonts/Opfonts.eot?30xshx');
   src: url('fonts/Opfonts.eot?30xshx#iefix') format('embedded-opentype'),

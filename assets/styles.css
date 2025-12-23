@@ -5,6 +5,7 @@
   margin-bottom: 15px;
   text-transform: uppercase;
   color: #00fffc;
+  font-family: "HindiGujarati";
 }
 
 /* Divider */
@@ -74,16 +75,15 @@
   color: #00c8ff;
 }
 @media (max-width: 480px) {
-    #searchedCitySection .tab-btn {
-        padding: 6px 12px;
-        font-size: 13px;
-    }
+  #searchedCitySection .tab-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
 
-    #searchedCitySection .tab-btn i {
-        font-size: 12px;
-    }
+  #searchedCitySection .tab-btn i {
+    font-size: 12px;
+  }
 }
-
 
 /* Selected tab */
 #searchedCitySection .tab-btn.selected {
@@ -228,4 +228,303 @@
 /* Optional: smooth scrolling effect */
 #searchedCitySection .searched-content {
   scroll-behavior: smooth;
+}
+
+/* Card */
+#selectedBusSection .route-card-google.dark {
+  margin-top: 16px;
+  padding: 18px;
+  background: #1c1f26;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto;
+}
+
+/* Row */
+#selectedBusSection .route-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Dots */
+#selectedBusSection .route-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+#selectedBusSection .route-icon.start {
+  background: #4fc3f7;
+}
+
+#selectedBusSection .route-icon.end {
+  background: #ff6e6e;
+}
+
+/* Connector */
+#selectedBusSection .route-connector {
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#selectedBusSection .route-line {
+  width: 2px;
+  height: 26px;
+  background: #3a3f4b;
+  border-radius: 2px;
+}
+
+/* underscore accent */
+#selectedBusSection .route-dash {
+  flex: 1;
+  height: 2px;
+  background: #5f6368;
+  border-radius: 2px;
+  align-self: center;
+}
+
+/* Text */
+#selectedBusSection .route-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* City code pill */
+#selectedBusSection .city-code {
+  font-size: 12px;
+  font-weight: 600;
+  color: #e8eaed;
+  background: #2b303b;
+  padding: 4px 8px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+}
+
+/* City name */
+#selectedBusSection .route-city {
+  font-size: 17px;
+  font-weight: 500;
+  color: #e8eaed;
+  text-transform: capitalize;
+}
+
+#selectedBusSection .app-close-btn {
+  position: absolute;
+  top: 0;
+  right: 18px;
+
+  background: #2b303b; /* same as city-code pill */
+  color: #e8eaed;
+
+  border: 1px solid #3a3f4b; /* soft outline */
+  font-size: 18px;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+#selectedBusSection .app-close-btn:hover {
+  background: #343a46;
+  border-color: #4fc3f7; /* subtle highlight */
+}
+
+#selectedBusSection .app-close-btn:active {
+  transform: scale(0.95);
+}
+
+#selectedBusSection .bus-info-card {
+  margin-top: 14px;
+  padding: 16px 18px;
+  background: #1c1f26;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto;
+}
+
+/* Top 2 columns */
+#selectedBusSection .info-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+#selectedBusSection .info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#selectedBusSection .info-label {
+  font-size: 12px;
+  color: #9aa0a6;
+}
+
+#selectedBusSection .info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e8eaed;
+}
+
+/* Bottom bar */
+#selectedBusSection .info-bar {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #2b303b;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Bar items */
+#selectedBusSection .bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e8eaed;
+}
+
+#selectedBusSection .bar-item i {
+  color: #4fc3f7;
+  font-size: 14px;
+}
+
+#selectedBusSection .info-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#selectedBusSection .info-head i {
+  font-size: 13px;
+  color: #9aa0a6;
+}
+
+
+.route-details-card.dark {
+    background: #1c1f26; /* updated card bg */
+    color: #eee;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.5);
+    margin-top: 15px;
+    max-width: 100%;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #fff;
+}
+
+.route-details-wrapper {
+    max-height: 250px;
+    max-width: 100%;
+    overflow: auto;
+    padding-right: 5px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.route-details-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.route-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    font-size: 14px;
+}
+
+.route-table th, .route-table td {
+    padding: 8px 6px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.route-table thead th {
+    background: #2a2a3c; /* header bg */
+    border-bottom: 2px solid #444;
+    font-weight: bold;
+    color: #fff;
+}
+
+.route-table tbody tr {
+    border-bottom: 1px solid #333;
+    transition: background 0.2s;
+}
+
+.route-table tbody tr:hover {
+    background: #2f2f46;
+}
+
+.dot-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 14px;
+    position: relative;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: #04ed00; /* gold dot */
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.line {
+    width: 2px;
+    background: #ff0000; /* subtle grey */
+    flex-grow: 1;
+    margin-top: -1px;
+}
+
+.line.last {
+    background: transparent;
+}
+
+/* Responsive tweaks */
+@media (max-width: 500px) {
+    .route-table th, .route-table td {
+        padding: 6px 4px;
+        font-size: 12px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .dot-line {
+        min-width: 12px;
+    }
+}
+
+/* Selected row standout */
+.route-table tbody tr.selected {
+    color: #ffea00; /* bright yellow text for selected */
+}
+
+.route-table tbody tr.selected .dot {
+    background: #ffea00; /* bright yellow dot */
+    box-shadow: 0 0 8px #ffea00; /* glow effect */
+}
+
+/* Hover effect on selected row */
+.route-table tbody tr.selected:hover {
+    color: #ffe600; /* slightly different on hover */
+    dot: background: #ffe600;
 }

@@ -60,14 +60,16 @@
             <!-- Search inputs -->
             <div class="app-search-inputs">
                 <div class="app-input-group">
-                    <input type="text" placeholder="From" id="fromInput" class="suggestion-input" data-list="places1" autocomplete="off">
+                    <input type="text" placeholder="From" id="fromInput" class="suggestion-input" data-list="places1"
+                        autocomplete="off">
                     <ul class="suggestions"></ul>
                 </div>
                 <div class="app-swap-icon">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="app-input-group">
-                    <input type="text" placeholder="To" id="toInput" class="suggestion-input" data-list="places1" autocomplete="off">
+                    <input type="text" placeholder="To" id="toInput" class="suggestion-input" data-list="places1"
+                        autocomplete="off">
                     <ul class="suggestions"></ul>
                 </div>
             </div>
@@ -151,6 +153,129 @@
             </div>
 
         </div>
+
+        <div class="full-section" id="selectedBusSection">
+            <!-- Close Button -->
+            <button class="app-close-btn" onclick="closeSectionTop('selectedBusSection')">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="route-card-google dark">
+                <div class="route-item">
+                    <div class="route-icon start"></div>
+                    <div class="route-info">
+                        <span class="city-code">DEL</span>
+                        <span class="route-city">Delhi</span>
+                    </div>
+                </div>
+
+                <div class="route-connector">
+                    <span class="route-line"></span>
+                    <span class="route-dash"></span>
+                </div>
+
+                <div class="route-item">
+                    <div class="route-icon end"></div>
+                    <div class="route-info">
+                        <span class="city-code">JPR</span>
+                        <span class="route-city">Jaipur</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bus-info-card">
+                <!-- Top row -->
+                <div class="info-top">
+                    <div class="info-col">
+                        <div class="info-head">
+                            <i class="far fa-calendar-alt"></i>
+                            <span class="info-label">Date</span>
+                        </div>
+                        <span class="info-value">00 mm</span>
+                    </div>
+
+                    <div class="info-col">
+                        <div class="info-head">
+                            <i class="fas fa-bus"></i>
+                            <span class="info-label">Type</span>
+                        </div>
+                        <span class="info-value">AC Sleeper</span>
+                    </div>
+                </div>
+
+                <!-- Divider bar -->
+                <div class="info-bar">
+                    <div class="bar-item">
+                        <i class="fas fa-route"></i>
+                        <span>285 km</span>
+                    </div>
+
+                    <div class="bar-item">
+                        <i class="far fa-clock"></i>
+                        <span>9 hour 40 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="route-details-card dark">
+                <h3 class="card-title">Route Details</h3>
+
+                <div class="route-details-wrapper">
+                    <table class="route-table">
+                        <thead>
+                            <tr>
+                                <th></th> <!-- Dot column -->
+                                <th>Station</th>
+                                <th>Arrival</th>
+                                <th>Departure</th>
+                                <th>Distance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>08:00</td>
+                                <td>08:15</td>
+                                <td>0 km</td>
+                            </tr>
+                            <tr class="selected">
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Rewari</td>
+                                <td>10:00</td>
+                                <td>10:10</td>
+                                <td>85 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line last"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>14:00</td>
+                                <td>14:15</td>
+                                <td>285 km</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+
 
     </div>
 
