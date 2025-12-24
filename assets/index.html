@@ -160,10 +160,14 @@
                 <i class="fas fa-times"></i>
             </button>
 
+            <button class="app-share-btn">
+                <i class="yhgi yhgi-share-android-24"></i>
+            </button>
+
             <div class="route-card-google dark">
                 <div class="route-item">
                     <div class="route-icon start"></div>
-                    <div class="route-info">
+                    <div class="route-info from">
                         <span class="city-code">DEL</span>
                         <span class="route-city">Delhi</span>
                     </div>
@@ -176,7 +180,7 @@
 
                 <div class="route-item">
                     <div class="route-icon end"></div>
-                    <div class="route-info">
+                    <div class="route-info to">
                         <span class="city-code">JPR</span>
                         <span class="route-city">Jaipur</span>
                     </div>
@@ -191,7 +195,7 @@
                             <i class="far fa-calendar-alt"></i>
                             <span class="info-label">Date</span>
                         </div>
-                        <span class="info-value">00 mm</span>
+                        <span class="info-value date">00 mm</span>
                     </div>
 
                     <div class="info-col">
@@ -199,18 +203,18 @@
                             <i class="fas fa-bus"></i>
                             <span class="info-label">Type</span>
                         </div>
-                        <span class="info-value">AC Sleeper</span>
+                        <span class="info-value busType">AC Sleeper</span>
                     </div>
                 </div>
 
                 <!-- Divider bar -->
                 <div class="info-bar">
-                    <div class="bar-item">
+                    <div class="bar-item distance">
                         <i class="fas fa-route"></i>
                         <span>285 km</span>
                     </div>
 
-                    <div class="bar-item">
+                    <div class="bar-item time">
                         <i class="far fa-clock"></i>
                         <span>9 hour 40 min</span>
                     </div>
@@ -268,12 +272,123 @@
                                 <td>14:15</td>
                                 <td>285 km</td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>08:00</td>
+                                <td>08:15</td>
+                                <td>0 km</td>
+                            </tr>
+                            <tr class="selected">
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Rewari</td>
+                                <td>10:00</td>
+                                <td>10:10</td>
+                                <td>85 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line last"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>14:00</td>
+                                <td>14:15</td>
+                                <td>285 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>08:00</td>
+                                <td>08:15</td>
+                                <td>0 km</td>
+                            </tr>
+                            <tr class="selected">
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Rewari</td>
+                                <td>10:00</td>
+                                <td>10:10</td>
+                                <td>85 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line last"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>14:00</td>
+                                <td>14:15</td>
+                                <td>285 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>08:00</td>
+                                <td>08:15</td>
+                                <td>0 km</td>
+                            </tr>
+                            <tr class="selected">
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line"></span>
+                                    </div>
+                                </td>
+                                <td>Rewari</td>
+                                <td>10:00</td>
+                                <td>10:10</td>
+                                <td>85 km</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="dot-line">
+                                        <span class="dot"></span>
+                                        <span class="line last"></span>
+                                    </div>
+                                </td>
+                                <td>Delhi</td>
+                                <td>14:00</td>
+                                <td>14:15</td>
+                                <td>285 km</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-
+            <!-- Floating Review/Report Button -->
+            <button class="floating-btn" onclick="openReviewReport()">
+                <i class="fas fa-flag"></i> Review / Report
+            </button>
         </div>
 
 

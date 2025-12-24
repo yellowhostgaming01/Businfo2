@@ -316,7 +316,7 @@
   text-transform: capitalize;
 }
 
-#selectedBusSection .app-close-btn {
+#selectedBusSection .app-close-btn, .app-share-btn {
   position: absolute;
   top: 0;
   right: 18px;
@@ -332,6 +332,12 @@
 
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+#selectedBusSection .app-share-btn{
+  left:  18px;
+  right:  unset;
+  padding: unset;
 }
 
 #selectedBusSection .app-close-btn:hover {
@@ -410,7 +416,7 @@
 }
 
 
-.route-details-card.dark {
+#selectedBusSection .route-details-card.dark {
     background: #1c1f26; /* updated card bg */
     color: #eee;
     padding: 15px;
@@ -421,14 +427,14 @@
     max-width: 100%;
 }
 
-.card-title {
+#selectedBusSection .card-title {
     font-size: 18px;
     margin-bottom: 12px;
     color: #fff;
 }
 
-.route-details-wrapper {
-    max-height: 250px;
+#selectedBusSection .route-details-wrapper {
+    max-height: 190px;
     max-width: 100%;
     overflow: auto;
     padding-right: 5px;
@@ -436,40 +442,41 @@
     -ms-overflow-style: none;
 }
 
-.route-details-wrapper::-webkit-scrollbar {
+#selectedBusSection .route-details-wrapper::-webkit-scrollbar {
     display: none;
 }
 
-.route-table {
+#selectedBusSection .route-table {
     width: 100%;
     border-collapse: collapse;
     table-layout: auto;
     font-size: 14px;
 }
 
-.route-table th, .route-table td {
+#selectedBusSection .route-table th,
+#selectedBusSection .route-table td {
     padding: 8px 6px;
     text-align: center;
     white-space: nowrap;
 }
 
-.route-table thead th {
+#selectedBusSection .route-table thead th {
     background: #2a2a3c; /* header bg */
     border-bottom: 2px solid #444;
     font-weight: bold;
     color: #fff;
 }
 
-.route-table tbody tr {
+#selectedBusSection .route-table tbody tr {
     border-bottom: 1px solid #333;
     transition: background 0.2s;
 }
 
-.route-table tbody tr:hover {
+#selectedBusSection .route-table tbody tr:hover {
     background: #2f2f46;
 }
 
-.dot-line {
+#selectedBusSection .dot-line {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -477,7 +484,7 @@
     position: relative;
 }
 
-.dot {
+#selectedBusSection .dot {
     width: 8px;
     height: 8px;
     background: #04ed00; /* gold dot */
@@ -485,45 +492,77 @@
     z-index: 1;
 }
 
-.line {
+#selectedBusSection .line {
     width: 2px;
     background: #ff0000; /* subtle grey */
     flex-grow: 1;
     margin-top: -1px;
 }
 
-.line.last {
+#selectedBusSection .line.last {
     background: transparent;
 }
 
 /* Responsive tweaks */
 @media (max-width: 500px) {
-    .route-table th, .route-table td {
+    #selectedBusSection .route-table th,
+    #selectedBusSection .route-table td {
         padding: 6px 4px;
         font-size: 12px;
     }
 
-    .dot {
+    #selectedBusSection .dot {
         width: 6px;
         height: 6px;
     }
 
-    .dot-line {
+    #selectedBusSection .dot-line {
         min-width: 12px;
     }
 }
 
 /* Selected row standout */
-.route-table tbody tr.selected {
+#selectedBusSection .route-table tbody tr.selected {
     color: #ffea00; /* bright yellow text for selected */
 }
 
-.route-table tbody tr.selected .dot {
+#selectedBusSection .route-table tbody tr.selected .dot {
     background: #ffea00; /* bright yellow dot */
     box-shadow: 0 0 8px #ffea00; /* glow effect */
 }
 
 /* Hover effect on selected row */
-.route-table tbody tr.selected:hover {
+#selectedBusSection .route-table tbody tr.selected:hover {
     color: #ffe600; /* slightly different on hover */
+}
+
+
+
+.floating-btn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #ff4d4d; /* bright red */
+    color: #fff;
+    border: none;
+    padding: 6px 12px; /* chhota aur compact */
+    border-radius: 20px;
+    font-size: 12px; /* small text */
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.floating-btn:hover {
+    background: #ff1a1a;
+    transform: translateY(-1px);
+}
+
+.floating-btn i {
+    font-size: 14px; /* chhota icon */
 }

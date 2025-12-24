@@ -95,7 +95,7 @@ body {
 /* homepage cards */
 .card-grid {
   display: none;
-  /* display: grid; */
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
   padding: 10px 0;

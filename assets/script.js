@@ -214,11 +214,90 @@ async function fetchBusesAdvanced(searchFrom, searchTo) {
   return buses;
 }
 
-function to12Hour(time24) {
-  if (!time24) return "";
-  console.log(time24);
+function getRouteSummary(busData, fromStation, toStation) {
+  var stops = busData.Stops;
 
-  let [hour, minute] = time24.split(":").map(Number);
+  var fromIndex = stops.findIndex((s) => s.Station === fromStation);
+  var toIndex = stops.findIndex((s) => s.Station === toStation);
+
+  if (fromIndex === -1 || toIndex === -1 || fromIndex > toIndex) {
+    return null; // invalid route
+  }
+
+  var selectedStops = stops.slice(fromIndex, toIndex + 1);
+
+  // ---------- Distance ----------
+  var totalDistance = 0;
+  selectedStops.forEach((s) => {
+    if (s.Distance) {
+      var d = parseFloat(s.Distance.toString().replace("km", ""));
+      if (!isNaN(d)) totalDistance += d;
+    }
+  });
+
+  // ---------- Time ----------
+  function timeToMinutes(t) {
+    if (!t || t === "Start" || t === "End") return null;
+    var p = t.split(":");
+    return parseInt(p[0]) * 60 + parseInt(p[1]);
+  }
+
+  var startMin = timeToMinutes(selectedStops[0].Departure);
+  var endMin = timeToMinutes(selectedStops[selectedStops.length - 1].Arrival);
+
+  var totalMinutes = null;
+  if (startMin !== null && endMin !== null) {
+    totalMinutes = endMin - startMin;
+    if (totalMinutes < 0) totalMinutes += 24 * 60; // midnight safety
+  }
+
+  return {
+    distanceKm: totalDistance,
+    timeMinutes: totalMinutes,
+    stops: selectedStops,
+    fromI: fromIndex,
+    toI: toIndex,
+  };
+}
+
+function formatDuration(mins) {
+  if (mins == null) return "--";
+  var h = Math.floor(mins / 60);
+  var m = mins % 60;
+  return h + "h " + m + "m";
+}
+
+function to12Hour(time24) {
+  if (time24 === "Start" || time24 === "End") {
+    return time24;
+  }
+  
+  if (
+    !time24 ||
+    time24 === "--" ||
+    typeof time24 !== "string" ||
+    !time24.includes(":")
+  ) {
+    return "--";
+  }
+
+  const parts = time24.split(":");
+  if (parts.length !== 2) return "--";
+
+  let hour = Number(parts[0]);
+  let minute = Number(parts[1]);
+
+  // NaN / range check
+  if (
+    isNaN(hour) ||
+    isNaN(minute) ||
+    hour < 0 ||
+    hour > 23 ||
+    minute < 0 ||
+    minute > 59
+  ) {
+    return "--";
+  }
 
   let ampm = hour >= 12 ? "PM" : "AM";
   hour = hour % 12;
@@ -269,6 +348,43 @@ function calculateDuration(start, end) {
   return `${h}h ${m.toString().padStart(2, "0")}m`;
 }
 
+function renderStopsTable(stops, tbody, formatTimeTo12Hour = true) {
+  tbody.innerHTML = ""; // clear old rows
+
+  stops.forEach((stop, index) => {
+    const tr = document.createElement("tr");
+
+    // data attributes
+    tr.dataset.guid = stop.GUID || "";
+    tr.dataset.index = index;
+
+    // values (safe fallback)
+    const station = stop.Station || "--";
+    let arrival = stop.Arrival;
+    let departure = stop.Departure;
+    const distance = stop.Distance ? stop.Distance : "--";
+
+    if (formatTimeTo12Hour) {
+      arrival = to12Hour(arrival);
+      departure = to12Hour(departure);
+    }
+    tr.innerHTML = `
+      <td>
+        <div class="dot-line">
+          <span class="dot"></span>
+          <span class="line"></span>
+        </div>
+      </td>
+      <td>${station}</td>
+      <td>${arrival}</td>
+      <td>${departure}</td>
+      <td>${distance}</td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
+
 var findBusesByCities = async function (from, to, parentDiv) {
   const titleEl = document.querySelector(
     "#searchedCitySection .app-section-title"
@@ -305,11 +421,53 @@ var findBusesByCities = async function (from, to, parentDiv) {
         <div class="bus-extra">Route-${bus.Route || ""}</div>
         `;
 
-    card.addEventListener("click", function(){
-      
-    })
+    card.addEventListener("click", function () {
+      showSelectedBusData(bus, from, to, titleEl.parentElement);
+    });
     container.appendChild(card);
   });
 
   openSectionTop("searchedCitySection", parentDiv);
+};
+
+var showSelectedBusData = function (
+  busData,
+  from,
+  to,
+  parentDiv,
+  filterTimed = new Date().getDate()
+) {
+  // console.log(busData);
+  var main = document.getElementById("selectedBusSection");
+  var fromEls = main.querySelectorAll(".route-info.from span");
+  var toEls = main.querySelectorAll(".route-info.to span");
+
+  fromEls[1].textContent = from;
+  toEls[1].textContent = to;
+
+  var busInfoCard = main.querySelector(".bus-info-card");
+  busInfoCard.querySelector("span.busType").textContent = busData.BusType;
+  busInfoCard.querySelector("span.date").textContent =
+    filterTimed.toString().padStart(2, "0") +
+    " " +
+    new Date().toLocaleString("en-US", { month: "long" });
+
+  busData.Stops[0].Station = busData.From;
+  busData.Stops[0].Arrival = "Start";
+  busData.Stops[busData.Stops.length - 1].Station = busData.To;
+  busData.Stops[busData.Stops.length - 1].Departure = "End";
+
+  var summary = getRouteSummary(busData, from, to);
+  busInfoCard.querySelector(".info-bar .distance span").textContent =
+    summary.distanceKm + " Km";
+  busInfoCard.querySelector(".info-bar .time span").textContent =
+    formatDuration(summary.timeMinutes);
+
+  var stopContainer = main.querySelector(".route-details-card tbody");
+  renderStopsTable(busData.Stops, stopContainer);
+  var tempTrs = stopContainer.querySelectorAll("tr");
+  tempTrs[summary.fromI].classList.add("selected");
+  tempTrs[summary.toI].classList.add("selected");
+
+  openSectionTop("selectedBusSection", parentDiv);
 };
