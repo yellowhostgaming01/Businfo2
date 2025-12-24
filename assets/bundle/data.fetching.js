@@ -25,22 +25,6 @@
             "Departure": "06:00",
             "Arrival": "20:05"
         },
-        {
-            "Station": "Kotha",
-            "Departure": "22:01",
-            "Distance": "3",
-            "Day": "0",
-            "Arrival": "22:00",
-            "GUID": "6d69e691-f86f-47b7-9712-108837885b8c"
-        },
-        {
-            "Station": "DELHI SARAY KALE KHAN",
-            "Day": "0",
-            "GUID": "9bebeb08-79ab-4d43-9f26-4fd27a37298f",
-            "Distance": "5km",
-            "Arrival": "23:00",
-            "Departure": "End"
-        }
     ],
     "Route": "Kosi",
     "BusType": "EXPRESS",
