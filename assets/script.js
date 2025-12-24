@@ -271,7 +271,7 @@ function to12Hour(time24) {
   if (time24 === "Start" || time24 === "End") {
     return time24;
   }
-  
+
   if (
     !time24 ||
     time24 === "--" ||
@@ -333,6 +333,7 @@ function getJourneyTimes(bus) {
     end12: to12Hour(endTime),
   };
 }
+
 function calculateDuration(start, end) {
   let [sh, sm] = start.split(":").map(Number);
   let [eh, em] = end.split(":").map(Number);
